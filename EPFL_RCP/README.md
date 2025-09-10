@@ -9,7 +9,7 @@ The RCP cluster [[Introduction1](https://www.epfl.ch/research/facilities/rcp/rcp
 To get on the cluster, you must first be on the access list.
 
 1.  **Check the Prerequisites**: Ensure you have your **Gaspar credentials**, have the **EPFL VPN** set up, and a working EPFL email.
-2.  **Request Access**: Send an email to **Stéphanie** (or **Amir** if she's unavailable). Ask them to add you to the `runai-vilab` list in [groups.epfl.ch](https:/).
+2.  **Request Access**: Send an email to **Stéphanie** (or **Amir** if she's unavailable). Ask them to add you to the `runai-vilab` list in [groups.epfl.ch](https:/groups.epfl.ch).
 3.  **Wait**: Access is typically granted within two hours after you're added to the list.
 
 ---
