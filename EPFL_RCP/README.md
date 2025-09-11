@@ -2,13 +2,25 @@
 
 The RCP cluster [[Introduction1](https://www.epfl.ch/research/facilities/rcp/rcp-cluster-service-description/)] [[Introduction2](https://wiki.rcp.epfl.ch/en/home/CaaS)] is our main EPFL research hub, packed with powerful **H100**, **A100** and **V100** GPUs and managed by the **Run:AI** scheduler. This guide covers everything you need to get started.
 
+## Available GPU Nodes (September 2025)
+
+| GPU Type | Nodes | CPU | Memory | Network | GPUs per Node |
+|----------|-------|-----|--------|---------|---------------|
+| **H200** | Up to 9 | 2× AMD EPYC 9454 (192 threads) | 1.5 TB | 2×100 Gbps | 8× H200 141GB |
+| **H100** | Up to 10 | 2× AMD EPYC 9454 (192 threads) | 1.5 TB | 2×100 Gbps | 8× H100 80GB |
+| **A100-80G** | Up to 32 | 2× AMD EPYC 7543 (128 threads) | 1 TB | 2×100 Gbps | 8× A100 80GB |
+| **A100-40G** | Up to 17 | 2× AMD EPYC 7302 (64 threads) | 1 TB | 2×100 Gbps | 8× A100 40GB |
+| **V100** | Up to 50 | 2× Intel Gold 6240 (72 threads) | 384 GB | 2×100 Gbps | 4× V100 32GB |
+
+**Total: 700+ GPUs across 118+ nodes**
+
 ---
 
 ## 1. Getting Access
 
 To get on the cluster, you must first be on the access list.
 
-1.  **Check the Prerequisites**: Ensure you have your **Gaspar credentials**, have the **EPFL VPN** set up, and a working EPFL email.
+1.  **Check the Prerequisites**: Ensure you have your **Gaspar credentials** and a working EPFL email (these are typically sent together in one email). If working remotely, set up the **EPFL VPN**[[Introduction](https://www.epfl.ch/campus/services/en/it-services/network-services/remote-intranet-access/)].
 2.  **Request Access**: Send an email to **Stéphanie** (or **Amir** if she's unavailable). Ask them to add you to the `runai-vilab` list in [groups.epfl.ch](https://groups.epfl.ch/#/home/member-groups).
 3.  **Wait**: Access is typically granted within two hours after you're added to the list.
 
@@ -130,15 +142,22 @@ You can follow [How to use RunAI submit](https://wiki.rcp.epfl.ch/en/home/CaaS/F
         --command \
         -- /bin/bash -ic "command-line-to-run"
     ```
-4.  **Monitor your job**:
+
+    ### Node Pool Selection
+
+    * **A100 and H100 nodes** are usually the best choice for most workloads
+    * **V100 nodes** are good for development and testing
+    * **H200 nodes** are reserved for the most demanding research tasks
+
+2.  **Monitor your job**:
     * `runai list`: See a summary of your jobs.
     * `runai describe job YOUR_JOB_NAME`: Get detailed status information.
     * `runai logs YOUR_JOB_NAME`: View the terminal output.
-5.  **Connect to a running job**: For interactive jobs, open a shell inside the container:
+3.  **Connect to a running job**: For interactive jobs, open a shell inside the container:
     ```bash
     runai bash YOUR_JOB_NAME
     ```
-6.  **Delete your job**: When you are finished, always delete your job to free up resources.
+4.  **Delete your job**: When you are finished, always delete your job to free up resources.
     ```bash
     runai delete job YOUR_JOB_NAME
     ```
@@ -178,3 +197,7 @@ After connecting to `haas001` via SSH, you can use VS Code’s **Remote - SSH** 
 * **Be a good neighbor**: Use CPU pods for tasks that don't need a GPU, and delete your interactive pods when not in use (e.g., at night) to free up resources.
 * **Watch GPU utilization**: Ensure your jobs have reasonably high GPU utilization. If not, release the GPU.
 * **Docker Cleanup**: Regularly delete old Docker containers on your local machine to save space.
+* **Getting Help**: 
+  - First, ask questions on the **#cluster** Slack channel where someone most likely knows the answer
+  - Contact the cluster leads: **@Mingqiao** and **@Zhitong**
+  - For technical support with RCP infrastructure, open a ticket at [support.epfl.ch](https://support.epfl.ch/)
