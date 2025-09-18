@@ -123,3 +123,12 @@ Your project ID is **a143**. For long-term file storage, use `/capstor/store/csc
 Each user also has a temporary scratch storage located at `$SCRATCH` (e.g., `/iopsstor/scratch/cscs/username` or `/capstor/scratch/cscs/username`), which is automatically cleaned every **30 days**. Don't use this for any files you need to keep long-term.
 
 ***
+
+## 6. General Rules
+* **Be a good neighbor**: Start with small-scale experiments first and run large-scale training only after debugging. Check your GPU hour usage [here](https://portal.cscs.ch/resource-details/e85760b210604cf9908bdffdffa489d7?tab=usage-history).
+* **Watch GPU utilization**: Ensure your jobs maintain reasonably high GPU utilization. If not, release the GPU resources.
+* **Getting Help**: 
+  - CSCS [documentation](https://docs.cscs.ch/)
+  - First, ask questions on the **#cluster** Slack channel where someone most likely knows the answer
+  - Contact the cluster leads: **@Mingqiao** and **@Zhitong**
+  - For technical support with RCP infrastructure, open a ticket at [support.cscs.ch](https://support.cscs.ch/)
