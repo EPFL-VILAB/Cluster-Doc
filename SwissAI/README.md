@@ -95,7 +95,7 @@ export MASTER_PORT=25678
 
 export MASTER_ADDR=$(hostname)
 
-srun --mem=460000 -ul bash -c "
+srun --cpu-bind=none -ul bash -c "
   # Change cwd and run the main training script.
   cd /iopsstor/scratch/cscs/mkhattak/june_experiments/proper_scaling_experiments/J12
   pip install wandb[media]
